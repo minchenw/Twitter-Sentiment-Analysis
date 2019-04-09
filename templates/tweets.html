@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tweets for {{ name }}</title>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}">
+</head>
+<style type="text/css">
+a:link {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+</style>
+<body>
+<h1 style="font-size:130%; font-family:Verdana, sans-serif">Tweets for {{name}}</h1>
+<p style="font-size:80%; font-family:Verdana, sans-serif">Median sentiment score: {{ med }}(-1.0 negative to 1.0 positive)</p>
+<ul>
+{%  for t in tweets %}
+    <li style="list-style:square; font-size:70%; font-family:Verdana, sans-serif; color:{{ t['color'] }}">
+        {{ t['score'] }}: <a style="color:{{ t['color'] }}" href="https://twitter.com/{{ name }}/status/{{ t['id'] }}">{{ t['text'] }}</a>
+    </li>
+{% endfor %}
+</ul>
+</body>
+</html>

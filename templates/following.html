@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users followed by {{name}}</title>
+    <style type="text/css">
+        a:link {
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}">
+</head>
+<body>
+<h1 style="font-size:130%; font-family:Verdana, sans-serif">Users followed by {{name}}</h1>
+<table>
+    <tbody>
+    {% for udict in rlist %}
+        <tr>
+            <td align=center width="80"><img src="{{ udict['image'] }}"></td>
+            <td style="font-size:70%; font-family:Verdana, sans-serif">
+                <a href="https://twitter.com/{{ udict['screen_name'] }}">{{ udict['name'] }}</a>
+                <br>{{ udict['followers'] }} followers
+                <br>Since {{ udict['created'] }}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
